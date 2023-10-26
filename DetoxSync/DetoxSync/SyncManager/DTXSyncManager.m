@@ -335,20 +335,20 @@ static atomic_nstimeinterval _maximumAnimationDuration = ATOMIC_VAR_INIT(1.0);
 
 + (void)_fireDelayedTimer
 {
-	if(_delayedFire != nil)
-	{
-		dispatch_source_set_timer(_delayedFire, dispatch_time(DISPATCH_TIME_NOW, _useDelayedFire * NSEC_PER_SEC), 0, (1ull * NSEC_PER_SEC) / 10);
-		return;
-	}
+	// if(_delayedFire != nil)
+	// {
+	// 	dispatch_source_set_timer(_delayedFire, dispatch_time(DISPATCH_TIME_NOW, _useDelayedFire * NSEC_PER_SEC), 0, (1ull * NSEC_PER_SEC) / 10);
+	// 	return;
+	// }
 	
-	_delayedFire = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, _queue);
-	dispatch_source_set_timer(_delayedFire, dispatch_time(DISPATCH_TIME_NOW, _useDelayedFire * NSEC_PER_SEC), 0, (1ull * NSEC_PER_SEC) / 10);
-	dispatch_source_set_event_handler(_delayedFire, ^{
-		[self _tryIdleBlocksNow:YES];
-		dispatch_source_cancel(_delayedFire);
-		_delayedFire = nil;
-	});
-	dispatch_resume(_delayedFire);
+	// _delayedFire = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, _queue);
+	// dispatch_source_set_timer(_delayedFire, dispatch_time(DISPATCH_TIME_NOW, _useDelayedFire * NSEC_PER_SEC), 0, (1ull * NSEC_PER_SEC) / 10);
+	// dispatch_source_set_event_handler(_delayedFire, ^{
+	// 	[self _tryIdleBlocksNow:YES];
+	// 	dispatch_source_cancel(_delayedFire);
+	// 	_delayedFire = nil;
+	// });
+	// dispatch_resume(_delayedFire);
 }
 
 DTX_ALWAYS_INLINE
